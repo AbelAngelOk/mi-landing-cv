@@ -1,0 +1,17 @@
+version: 1
+frontend:
+  phases:
+    preBuild:
+      commands:
+        - npm install --legacy-peer-deps  # Instala las dependencias, gestionando conflictos
+    build:
+      commands:
+        - npm run build  # Ejecuta el build de Next.js
+  artifacts:
+    baseDirectory: .next  # Directorio de salida de Next.js
+    files:
+      - '**/*'  # Todos los archivos dentro del directorio .next
+  cache:
+    paths:
+      - '.next/cache/**/*'  # Caché para acelerar el build
+      - 'node_modules/**/*'  # Caché de dependencias
