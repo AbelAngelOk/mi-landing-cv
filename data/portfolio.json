@@ -1,0 +1,75 @@
+{
+  "projects": [
+    {
+      "id": 1,
+      "title": "Automatizacion de pruebas E2E en Mercado Libre",
+      "description": "Proyecto de automatización de pruebas de interfaz de usuario para Mercado Libre utilizando Java y Selenium. Incluye casos de prueba para flujos de compra, búsqueda y navegación.",
+      "image": "https://cdn-icons-png.flaticon.com/512/226/226777.png",
+      "githubUrl": "https://github.com/AbelAngelOk/Java_Automation_ML",
+      "type": "UI",
+      "tool": "Selenium",
+      "language": "Java"
+    },
+    {
+      "id": 2,
+      "title": "Automatizacion de pruebas API en Clockify",
+      "description": "Framework de automatización de pruebas de API para Clockify utilizando Lippia API Lowcode. Permite validar endpoints de gestión de tiempo, proyectos y usuarios con mínimo código.",
+      "image": "https://avatars.githubusercontent.com/u/149083471?s=200&v=4",
+      "githubUrl": "https://github.com/AbelAngelOk/lippia-low-code-sample-project",
+      "type": "API",
+      "tool": "Other",
+      "language": "Java"
+    },
+    {
+      "id": 3,
+      "title": "Scrapping UI en Linkedin",
+      "description": "Herramienta de web scraping desarrollada en Python para extraer datos de perfiles de LinkedIn. Permite recopilar información de empresas.",
+      "image": "https://cdn-icons-png.flaticon.com/512/5968/5968350.png",
+      "githubUrl": "https://github.com/AbelAngelOk/linkedin-scrapping",
+      "type": "UI",
+      "tool": "Other",
+      "language": "Python"
+    },
+    {
+      "id": 4,
+      "title": "Automatizacion de pruebas con en OrangeHRM",
+      "description": "Implementación del patrón Screenplay para automatización de pruebas UI en OrangeHRM utilizando C#. Enfoque orientado a tareas que mejora la mantenibilidad y legibilidad del código.",
+      "image": "https://cdn-icons-png.flaticon.com/512/6132/6132221.png",
+      "githubUrl": "https://github.com/AbelAngelOk/DemoAutomationC-Sharp/tree/main",
+      "type": "UI",
+      "tool": "Selenium",
+      "language": "C#"
+    },
+    {
+      "id": 5,
+      "title": "Automatizacion de pruebas API con Karate",
+      "description": "Framework de pruebas API utilizando Karate DSL, que combina API automatización, mocks, aserciones y rendimiento en una sola herramienta. Incluye reportes detallados y paralelización.",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRc2jEHGOT4Nv-PtMhR4mvcYdEJWG-SoWKo7A&s",
+      "githubUrl": "",
+      "type": "API",
+      "tool": "Other",
+      "language": "Java"
+    },
+    {
+      "id": 6,
+      "title": "Automatizacion de pruebas UI y API con Cypress",
+      "description": "Suite completa de pruebas end-to-end utilizando Cypress para automatizar tanto UI como API. Incluye integración con CI/CD, capturas de pantalla automáticas y reportes detallados.",
+      "image": "https://static-00.iconduck.com/assets.00/cypress-icon-256x256-em0y0vg8.png",
+      "githubUrl": "",
+      "type": "Both",
+      "tool": "Other",
+      "language": "JavaScript"
+    },
+    {
+      "id": 7,
+      "title": "Automatizacion API con Postman",
+      "description": "Colección de pruebas API automatizadas utilizando Postman y Newman. Incluye validaciones de esquema, pruebas de contrato y verificaciones de rendimiento para APIs RESTful.",
+      "image": "https://www.svgviewer.dev/static-svgs/14366/postman-icon.svg",
+      "githubUrl": "",
+      "type": "API",
+      "tool": "Other",
+      "language": "JavaScript"
+    }
+  ]
+}
+

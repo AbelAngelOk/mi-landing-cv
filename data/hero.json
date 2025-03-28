@@ -1,0 +1,24 @@
+{
+  "title": "QA",
+  "roles": ["Analyst", "Engineer", "Manager"],
+  "description": "Gestión de equipos, análisis funcional, pruebas manuales, automatización de pruebas, y más.",
+  "profileImage": "https://i.pinimg.com/736x/6b/12/7c/6b127cab2119472048ccf2c6ed569af0.jpg",
+  "socialLinks": [
+    {
+      "type": "whatsapp",
+      "url": "https://wa.me/5491130830388",
+      "label": "WhatsApp"
+    },
+    {
+      "type": "linkedin",
+      "url": "https://www.linkedin.com/in/abelangel96",
+      "label": "LinkedIn"
+    },
+    {
+      "type": "cv",
+      "url": "/path-to-your-cv.pdf",
+      "label": "Descargar CV"
+    }
+  ]
+}
+

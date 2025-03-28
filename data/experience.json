@@ -1,0 +1,86 @@
+{
+  "experiences": [
+    {
+      "company": "CROWDAR",
+      "role": "QA Engineer",
+      "period": "2023 - 2025",
+      "project": "Fichap",
+      "description": [
+        "Identificación de prioridades utilizando la técnica de <span class='knowledge'>matriz de prioridades</span> y asignación de pruebas al equipo.",
+        "Creación de tableros de trabajo para coordinar el flujo de trabajo entre QA y Desarrollo.",
+        "Reuniones con el equipo de producto para definir o aclarar alcance, criterios y contemplar escenarios identificados.",
+        "Reuniones con el equipo de UX Design para levantar inconsistencias en la UI propuesta en <span class='tool'>Figma</span>.",
+        "Creación de escenarios de prueba utilizando <span class='knowledge'>tabla de decisión</span> en <span class='tool'>Google Sheets</span>.",
+        "Reporte de bugs, falta de definiciones o consultas en tarjetas en <span class='tool'>Asana</span>.",
+        "Seguimiento de incidencias aplicando <span class='knowledge'>Kanban</span> en <span class='tool'>Asana</span>.",
+        "Diseño de escenarios de pruebas automatizadas con <span class='tool'>Cucumber</span>.",
+        "Creación de pruebas automatizadas P2P en <span class='tool'>Java</span> con <span class='tool'>Lippia Test Manager</span>.",
+        "Creación de pruebas API automatizadas en <span class='tool'>Java</span> con <span class='tool'>Lippia Low Code</span>.",
+        "Análisis de respuestas de API y performance con <span class='tool'>Postman</span> y <span class='tool'>DevTools</span>.",
+        "Pruebas mobile con dispositivo físico <span class='tool'>Android</span>, <span class='tool'>iOS</span> y la utilización de <span class='tool'>BrowserStack</span>."
+      ]
+    },
+    {
+      "company": "ARBUSTA",
+      "role": "QA Analyst",
+      "period": "2022 - 2023",
+      "project": "BeautyCounter (EE.UU.)",
+      "description": [
+        "Comunicación escrita en inglés con el equipo de desarrollo y soporte de <span class='knowledge'>Magento</span> en <span class='tool'>Slack</span>.",
+        "Diseño de casos de prueba de <span class='knowledge'>caja negra</span> en inglés en <span class='tool'>Excel</span>.",
+        "Ejecución de pruebas: <span class='knowledge'>aceptación</span>, <span class='knowledge'>integración</span>, <span class='knowledge'>regresión</span> y <span class='knowledge'>smoke test</span>.",
+        "Reporte de horas en <span class='tool'>Odoo</span>.",
+        "Flujos de prueba P2P iniciados en el CMS de <span class='tool'>Magento</span>.",
+        "Reuniones periódicas en <span class='tool'>Zoom</span>.",
+        "Análisis de performance con <span class='tool'>DevTools</span>."
+      ]
+    },
+    {
+      "company": "ARBUSTA",
+      "role": "QA Analyst",
+      "period": "2021 - 2022",
+      "project": "Bankingly (Servicios Bancarios)",
+      "description": [
+        "Planificación de escenarios de prueba con <span class='knowledge'>Tablas de decisión</span>.",
+        "Diseño de escenarios en <span class='knowledge'>Gherkin</span> con <span class='tool'>Cucumber</span>.",
+        "Implementación del proyecto con el patrón <span class='knowledge'>POM (Page Object Model)</span> en <span class='tool'>Java</span> con <span class='tool'>Selenium</span>.",
+        "Estructura de pruebas con <span class='tool'>JUnit</span>."
+      ]
+    },
+    {
+      "company": "ARBUSTA",
+      "role": "QA Analyst",
+      "period": "2020 - 2021",
+      "project": "Banco Macro (Homebanking)",
+      "description": [
+        "Desarrollo y mantenimiento de pruebas automatizadas en <span class='tool'>C#</span>.",
+        "Automatización de pruebas UI con <span class='tool'>Selenium</span> y <span class='tool'>Cucumber</span>.",
+        "Enfoque orientado al usuario final con <span class='knowledge'>Screenplay Pattern</span> usando <span class='tool'>Boa.Constrictor</span>."
+      ]
+    },
+    {
+      "company": "ARBUSTA",
+      "role": "QA Analyst",
+      "period": "2019 - 2020",
+      "project": "SURA (Seguros de vida, hogar y automóvil)",
+      "description": [
+        "Diseño y ejecución de casos de prueba: <span class='knowledge'>regresión</span>, <span class='knowledge'>integración</span> y <span class='knowledge'>aceptación</span>.",
+        "Gestión y seguimiento del ciclo de vida de bugs en <span class='tool'>Azure DevOps</span>.",
+        "Comunicación con el equipo a través de <span class='tool'>Teams</span>.",
+        "Trabajo en un entorno ágil con <span class='knowledge'>Scrum</span>.",
+        "Gestión de pruebas con <span class='tool'>Xray</span> para <span class='tool'>Jira</span>."
+      ]
+    },
+    {
+      "company": "ARBUSTA",
+      "role": "Data Entry Operator",
+      "period": "2018 - 2019",
+      "project": "Mercado Libre",
+      "description": [
+        "Clipping de información de productos en el catálogo en <span class='tool'>Excel</span>.",
+        "Product matching de productos similares o idénticos en la base de datos usando <span class='tool'>Excel</span>."
+      ]
+    }
+  ]
+}
+

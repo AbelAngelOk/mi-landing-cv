@@ -1,0 +1,103 @@
+{
+  "skillRoles": [
+    {
+      "title": "QA Automation",
+      "icon": "cogs",
+      "categories": [
+        {
+          "title": "Lenguajes de Programación",
+          "skills": ["Java", "C#", "Python"]
+        },
+        {
+          "title": "Herramientas de Automatización UI",
+          "skills": ["Selenium", "Postman", "Karate"]
+        },
+        {
+          "title": "Frameworks de Pruebas",
+          "skills": ["JUnit", "TestNG"]
+        },
+        {
+          "title": "BDD y Frameworks Complementarios",
+          "skills": ["Cucumber", "SerenityBDD", "Boa.Constrictor"]
+        }
+      ]
+    },
+    {
+      "title": "QA Analyst",
+      "icon": "code",
+      "categories": [
+        {
+          "title": "Gestión de proyectos y seguimiento",
+          "skills": ["Jira", "X-Ray", "Trello", "Asana"]
+        },
+        {
+          "title": "Metodologías Ágiles",
+          "skills": ["Scrum", "Kanban"]
+        },
+        {
+          "title": "Herramientas de Pruebas",
+          "skills": ["Postman", "BrowserStack", "Jam"]
+        },
+        {
+          "title": "Comunicación y colaboración",
+          "skills": ["G-Suite", "Slack"]
+        },
+        {
+          "title": "Técnicas de Pruebas",
+          "skills": [
+            "Partición de Equivalencias",
+            "Análisis de valores limites",
+            "Tabla de decisión",
+            "Casos de uso",
+            "Gherkin"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Desarrollo",
+      "icon": "database",
+      "categories": [
+        {
+          "title": "Frontend",
+          "skills": ["React", "JavaScript", "TypeScript", "Tailwind", "ASP.NET AJAX"]
+        },
+        {
+          "title": "Backend",
+          "skills": ["Node.js", ".NET Framework", ".NET Web", "ASP.NET Core", "ASP.NET Web API", "ASP.NET MVC"]
+        },
+        {
+          "title": "Bases de Datos",
+          "skills": ["PostgreSQL", "MySQL"]
+        }
+      ]
+    },
+    {
+      "title": "AWS Cloud Practitioner Trained",
+      "icon": "cloud",
+      "categories": [
+        {
+          "title": "Identidad y Seguridad",
+          "skills": ["IAM (Identity and Access Management)", "AWS Trusted Advisor"]
+        },
+        {
+          "title": "Redes y Despliegue",
+          "skills": ["VPC (Virtual Private Cloud)", "Route 53", "Elastic Beanstalk", "CloudFront"]
+        },
+        {
+          "title": "Cómputo y Contenedores",
+          "skills": ["EC2", "Lambda", "ECS", "EKS", "ECR"]
+        },
+        {
+          "title": "Almacenamiento y Bases de Datos",
+          "skills": ["EBS (Elastic Block Store)", "S3", "EFS", "S3 Glacier", "RDS", "DynamoDB", "Redshift", "Aurora"]
+        },
+        {
+          "title": "Escalabilidad y Alta Disponibilidad",
+          "skills": ["ELB (Elastic Load Balancing)", "Auto Scaling"]
+        }
+      ]
+    }
+  ]
+}
+

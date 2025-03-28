@@ -1,0 +1,115 @@
+{
+  "mainEducation": [
+    {
+      "institution": "Teclab Instituto Técnico Superior",
+      "degree": "Técnico en Programación",
+      "period": "2023 - Actualmente",
+      "status": "En curso",
+      "highlight": true,
+      "description": "Formación en desarrollo de software con enfoque en programación estructurada y orientada a objetos, diseño de bases de datos y desarrollo de aplicaciones.",
+      "skills": ["HTML", "CSS", "JavaScript", "PHP", "SQL", "AWS", "UX"]
+    },
+    {
+      "institution": "EducacionIT",
+      "degree": "Quality Assurance",
+      "period": "2021 - 2022",
+      "status": "Egresado",
+      "highlight": true,
+      "description": "Formación integral en garantía de calidad del software, abarcando metodologías de prueba, automatización, herramientas de testing y buenas prácticas en el desarrollo de software.",
+      "skills": [
+        "QA Software Tester Fundamentals",
+        "Software Tester QA Management",
+        "Introducción al Paradigma de Objetos",
+        "Análisis y Diseño de Casos de Pruebas",
+        "UML y UP: Análisis y Diseño Orientado a Objetos",
+        "Análisis Funcional",
+        "Git: Desarrollo Colaborativo",
+        "Testing de Webservices con SOAP UI",
+        "Testing Automation con Selenium"
+      ]
+    }
+  ],
+  "otherEducation": [
+    {
+      "institution": "Bootcamp en Nucba Hub IT",
+      "degree": "Full Stack Development",
+      "period": "2022 - 2023",
+      "status": "Egresado",
+      "description": "Desarrollo de aplicaciones web completas, desde la interfaz de usuario hasta el backend.",
+      "skills": [
+        "Git",
+        "Github",
+        "Vercel",
+        "React.js",
+        "TypeScript",
+        "Bases de datos relacionales",
+        "Node.js",
+        "Postman"
+      ]
+    },
+    {
+      "institution": "UTN FRRe",
+      "degree": "Diplomatura en Programación .NET",
+      "period": "2022",
+      "status": "Egresado",
+      "description": "Diplomatura enfocada en el desarrollo de aplicaciones de escritorio y web utilizando .NET Framework y .NET Core, con énfasis en buenas prácticas y arquitectura de software.",
+      "skills": ["C#", ".NET", "ASP.NET Core", "APIs REST", "SQL Server", "POO"]
+    },
+    {
+      "institution": "UTN FRRe",
+      "degree": "Administración de Proyectos en JIRA",
+      "period": "2022",
+      "status": "Egresado",
+      "description": "Formación en gestión de proyectos y control de tareas en entornos ágiles utilizando Jira, con enfoque en la administración de equipos, seguimiento de incidencias y optimización del flujo de trabajo.",
+      "skills": ["Jira"]
+    },
+    {
+      "institution": "AWS Academy",
+      "degree": "AWS Cloud Foundations",
+      "period": "2024",
+      "status": "Egresado",
+      "description": "Formación en Amazon Web Services (AWS), con enfoque en arquitectura en la nube, despliegue de aplicaciones, almacenamiento, bases de datos y seguridad.",
+      "skills": [
+        "IAM",
+        "Elastic Beanstalk",
+        "VPC",
+        "EC2",
+        "Route 53",
+        "CloudFront",
+        "ECS",
+        "EKS",
+        "ECR",
+        "Lambda",
+        "EBS",
+        "S3",
+        "EFS",
+        "S3 Glacier",
+        "RDS",
+        "DynamoDB",
+        "Redshift",
+        "Aurora",
+        "AWS Trusted Advisor",
+        "ELB",
+        "Auto Scaling"
+      ]
+    }
+  ],
+  "certifications": [
+    {
+      "title": "AWS Academy",
+      "subtitle": "Cloud Foundations",
+      "date": "2023"
+    },
+    {
+      "title": "Administración de Proyectos en JIRA",
+      "subtitle": "UTN FRRE",
+      "date": "2022"
+    },
+    {
+      "title": "Tester",
+      "subtitle": "CESSI",
+      "date": "2022"
+    }
+  ]
+}
+

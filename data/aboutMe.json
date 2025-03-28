@@ -1,0 +1,24 @@
+{
+  "name": "Abel Angel",
+  "profileImage": "https://i.postimg.cc/76fd36x2/bf2a4334813864327ef325ae8a767e9a.jpg",
+  "bio": "Nací en 1996 en Quilmes, Argentina, donde actualmente resido. Mi formación en el mundo IT comenzó en 2016. Inicié mi carrera profesional en 2018 y, a partir de 2019, me desempeñé formalmente como QA hasta la actualidad.",
+  "stats": [
+    {
+      "value": "5+",
+      "label": "Años como QA"
+    },
+    {
+      "value": "5",
+      "label": "Proyectos principales"
+    },
+    {
+      "value": "20+",
+      "label": "Herramientas de QA"
+    },
+    {
+      "value": "3",
+      "label": "Lenguajes de programación"
+    }
+  ]
+}
+
