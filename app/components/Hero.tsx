@@ -1,185 +1,118 @@
-"use client"
-
-import { useEffect, useState } from "react"
 import Link from "next/link"
-import { FaCode, FaWhatsapp, FaLinkedin, FaFileAlt } from "react-icons/fa"
-import { useTextAnimation } from "../hooks/useTextAnimation"
-import type { HeroData } from "../types"
+import type { ReactNode } from "react"
+import { FaFileAlt, FaLinkedin, FaWhatsapp } from "react-icons/fa"
+import { siteConfig } from "@/lib/site"
+import type { AboutMeData, HeroData } from "../types"
+import RoleTicker from "./RoleTicker"
 
-export default function Hero() {
-  const [heroData, setHeroData] = useState<HeroData | null>(null)
-  const [isLoading, setIsLoading] = useState(true)
-  const [error, setError] = useState<string | null>(null)
+const socialIcons: Record<string, ReactNode> = {
+  whatsapp: <FaWhatsapp aria-hidden="true" />,
+  linkedin: <FaLinkedin aria-hidden="true" />,
+}
 
-  const animatedText = useTextAnimation()
-
-  useEffect(() => {
-    const fetchHeroData = async () => {
-      try {
-        const response = await fetch("/api/hero")
-        if (!response.ok) {
-          throw new Error("Error al cargar los datos del hero")
-        }
-        const data = await response.json()
-        setHeroData(data)
-      } catch (err) {
-        setError("Error al cargar los datos. Por favor, recarga la página.")
-        console.error("Error fetching hero data:", err)
-      } finally {
-        setIsLoading(false)
-      }
-    }
-
-    fetchHeroData()
-  }, [])
-
-  if (isLoading) {
-    return (
-      <section className="relative py-20 min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary mx-auto"></div>
-          <p className="mt-4 text-slate-600">Cargando...</p>
-        </div>
-      </section>
-    )
-  }
-
-  if (error || !heroData) {
-    return (
-      <section className="relative py-20 min-h-screen flex items-center justify-center">
-        <div className="text-center text-red-500">
-          <p>{error || "Error al cargar los datos"}</p>
-          <button onClick={() => window.location.reload()} className="mt-4 bg-primary text-white px-4 py-2 rounded-md">
-            Reintentar
-          </button>
-        </div>
-      </section>
-    )
-  }
-
-  const getSocialIcon = (type: string) => {
-    switch (type) {
-      case "whatsapp":
-        return <FaWhatsapp className="mr-2" />
-      case "linkedin":
-        return <FaLinkedin className="mr-2" />
-      case "cv":
-        return <FaFileAlt className="mr-2" />
-      default:
-        return null
-    }
-  }
-
-  const getSocialButtonColor = (type: string) => {
-    switch (type) {
-      case "whatsapp":
-        return "bg-green-600 hover:bg-green-700"
-      case "linkedin":
-      case "cv":
-        return "bg-blue-600 hover:bg-blue-700"
-      default:
-        return "bg-slate-600 hover:bg-slate-700"
-    }
-  }
+/**
+ * Hero renderizado en el servidor: el h1, la descripción y las métricas viajan
+ * en el HTML inicial. Solo el efecto de tipeo es cliente.
+ *
+ * Fondo azul profundo (confianza, competencia) con acento teal en el rol y en
+ * los números: el ojo entra por el nombre, sigue por el rol y aterriza en el CTA.
+ */
+export default function Hero({ hero, about }: { hero: HeroData; about: AboutMeData }) {
+  const externalLinks = hero.socialLinks.filter((link) => link.type !== "cv")
 
   return (
-    <section className="relative py-20 min-h-screen flex items-center overflow-hidden">
-      {/* Fondo con gradiente de Tailwind */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900 z-0"></div>
+    <section className="relative flex min-h-[92vh] items-center overflow-hidden bg-surface-deep pt-24 pb-20">
+      {/* Capa 1: degradado de marca */}
+      <div className="absolute inset-0 bg-gradient-to-br from-surface-deep via-primary to-surface-deep" />
 
-      {/* Elementos visuales minimalistas */}
-      <div className="absolute inset-0 z-10 opacity-10">
-        {/* Círculos decorativos */}
-        <div className="absolute top-20 left-20 w-64 h-64 rounded-full border-4 border-white"></div>
-        <div className="absolute bottom-20 right-20 w-96 h-96 rounded-full border-2 border-white"></div>
-        <div className="absolute top-1/2 left-1/3 w-40 h-40 rounded-full bg-white opacity-10"></div>
+      {/* Capa 2: retícula sutil, da textura sin competir con el texto */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 opacity-[0.07]"
+        style={{
+          backgroundImage:
+            "linear-gradient(to right, white 1px, transparent 1px), linear-gradient(to bottom, white 1px, transparent 1px)",
+          backgroundSize: "64px 64px",
+        }}
+      />
 
-        {/* Patrones de puntos */}
-        <div className="absolute top-40 right-40 grid grid-cols-5 gap-4">
-          {[...Array(25)].map((_, i) => (
-            <div key={i} className="w-2 h-2 rounded-full bg-white"></div>
-          ))}
-        </div>
-        <div className="absolute bottom-40 left-40 grid grid-cols-3 gap-6">
-          {[...Array(9)].map((_, i) => (
-            <div key={i} className="w-3 h-3 rounded-full bg-white"></div>
-          ))}
-        </div>
-      </div>
+      {/* Capa 3: halos de color que suavizan los bordes */}
+      <div aria-hidden="true" className="absolute -left-32 top-10 h-96 w-96 rounded-full bg-accent/20 blur-3xl" />
+      <div aria-hidden="true" className="absolute -right-24 bottom-0 h-[28rem] w-[28rem] rounded-full bg-primary/40 blur-3xl" />
 
-      {/* Contenido principal */}
-      <div className="container text-center relative z-20">
-        {/* Contenedor de imagen comentado para posible uso futuro
-        <div className="mb-8 flex justify-center">
-          <div className="w-40 h-40 rounded-full overflow-hidden border-4 border-primary shadow-lg relative group">
-            <Image
-              src={heroData.profileImage || "/placeholder.svg"}
-              alt="Abel Angel"
-              layout="fill"
-              objectFit="cover"
-              className="absolute inset-0"
-              title="Imagen de prueba, uso temporal"
-            /> 
-            <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-60 flex items-center justify-center transition-all duration-300 opacity-0 group-hover:opacity-100">
-              <p className="text-white text-xs px-2 text-center">Imagen de prueba, uso temporal</p>
-            </div>
-          </div>
-        </div>
-        */}
-        <FaCode className="mx-auto text-5xl mb-6 text-white" />
-        <h1 className="text-4xl md:text-5xl font-bold mb-4 text-white">
-          {heroData.title} <span className="inline-block min-w-[180px]">{animatedText}</span>
-        </h1>
-        <p className="text-xl mb-8 text-white max-w-2xl mx-auto">{heroData.description}</p>
-        <div className="flex flex-wrap justify-center gap-4">
-          {heroData.socialLinks.map((link, index) => {
-            // Si es el enlace del CV, cambiarlo para que redireccione a /curriculum
-            if (link.type === "cv") {
-              return (
-                <Link
-                  key={index}
-                  href="/curriculum"
-                  className={`${getSocialButtonColor(link.type)} text-white font-semibold py-2 px-6 rounded-full transition duration-300 flex items-center shadow-md`}
-                >
-                  <FaFileAlt className="mr-2" /> Ver Currículum
-                </Link>
-              )
-            }
+      <div className="container relative z-10">
+        <div className="mx-auto max-w-3xl text-center">
+          <p className="animate-fade-up text-xs font-semibold uppercase tracking-[0.2em] text-accent">
+            QA Engineer · {siteConfig.location.city}, {siteConfig.location.countryName}
+          </p>
 
-            // Para otros enlaces, mantener el comportamiento original
-            return (
+          <h1 className="mt-5 animate-fade-up text-display-lg text-white [animation-delay:80ms]">
+            Abel Angel
+            <span className="sr-only"> — QA Engineer especializado en automatización de pruebas y performance</span>
+          </h1>
+
+          <p className="mt-4 animate-fade-up text-2xl font-semibold text-white/90 sm:text-3xl [animation-delay:160ms]">
+            {hero.title} <RoleTicker />
+            <span className="sr-only">Analyst, Engineer y Manager</span>
+          </p>
+
+          <p className="mx-auto mt-6 max-w-2xl animate-fade-up text-base leading-relaxed text-white/70 sm:text-lg [animation-delay:240ms]">
+            {hero.description}
+          </p>
+
+          <div className="mt-10 flex animate-fade-up flex-wrap justify-center gap-3 [animation-delay:320ms]">
+            {/* Un único CTA primario: el resto queda en segundo nivel */}
+            <Link href="/curriculum" className="btn-accent">
+              <FaFileAlt aria-hidden="true" /> Ver currículum
+            </Link>
+            {externalLinks.map((link) => (
               <a
-                key={index}
+                key={link.type}
                 href={link.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`${getSocialButtonColor(link.type)} text-white font-semibold py-2 px-6 rounded-full transition duration-300 flex items-center shadow-md`}
+                className="btn-on-dark"
+                aria-label={`${link.label} (se abre en una pestaña nueva)`}
               >
-                {getSocialIcon(link.type)}
+                {socialIcons[link.type]}
                 {link.label}
               </a>
-            )
-          })}
+            ))}
+          </div>
+
+          {/* Barra de confianza: las cifras clave, extraíbles por un LLM */}
+          <dl className="mx-auto mt-14 grid max-w-2xl animate-fade-up grid-cols-2 gap-px overflow-hidden rounded-xl border border-white/15 bg-white/10 sm:grid-cols-4 [animation-delay:400ms]">
+            {about.stats.map((stat) => (
+              <div key={stat.label} className="bg-surface-deep/60 px-4 py-5 text-center backdrop-blur-sm">
+                <dt className="sr-only">{stat.label}</dt>
+                <dd>
+                  <span className="block text-2xl font-bold text-accent">{stat.value}</span>
+                  <span className="mt-1 block text-xs leading-snug text-white/60">{stat.label}</span>
+                </dd>
+              </div>
+            ))}
+          </dl>
         </div>
       </div>
 
-      {/* Formas geométricas adicionales con animación */}
-      <div className="absolute bottom-10 left-0 right-0 flex justify-center z-20">
-        <div className="animate-bounce">
-          <svg
-            className="w-6 h-6 text-white"
-            fill="none"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-          </svg>
-        </div>
-      </div>
+      <a
+        href="#sobre-mi"
+        aria-label="Ir a la sección Sobre mí"
+        className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2 rounded-full p-2 text-white/50 transition-colors hover:text-white"
+      >
+        <svg
+          className="h-6 w-6 animate-bounce"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="2"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          aria-hidden="true"
+        >
+          <path d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+        </svg>
+      </a>
     </section>
   )
 }
-

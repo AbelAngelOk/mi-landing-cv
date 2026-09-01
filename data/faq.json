@@ -1,0 +1,28 @@
+{
+  "faqs": [
+    {
+      "question": "¿Quién es Abel Angel?",
+      "answer": "Abel Angel es un QA Engineer argentino radicado en Quilmes, Buenos Aires, con más de 7 años en la industria del software y 6 años dedicados específicamente a Quality Assurance. Trabaja en Crowdar y actualmente lidera la planificación de pruebas de performance del proyecto MDA."
+    },
+    {
+      "question": "¿Qué herramientas de automatización de pruebas maneja?",
+      "answer": "Automatiza pruebas de UI con Selenium, Appium y Boa.Constrictor (Screenplay Pattern); pruebas de API con Postman, Newman, Karate y Lippia Low Code; y pruebas de performance con k6, Scale Test y Scale Center. Escribe los frameworks en Java, C# y Python, con Cucumber para BDD y JUnit o TestNG como runners."
+    },
+    {
+      "question": "¿Tiene experiencia en pruebas de performance?",
+      "answer": "Sí. En el proyecto MDA planifica las pruebas de performance de punta a punta: relevó necesidades, restricciones y bloqueantes, definió la estrategia de cobertura y ejecuta pruebas de carga con k6 sobre plataformas Salesforce usando Scale Test y Scale Center, validando previamente las funcionalidades con Postman y Newman."
+    },
+    {
+      "question": "¿Automatiza pruebas mobile?",
+      "answer": "Sí. En el proyecto Macro360 automatizó el producto mobile con el stack de pruebas de Lippia, obteniendo locators con Appium Inspector y configurando BrowserStack para ejecutar sobre dispositivos reales Android e iOS."
+    },
+    {
+      "question": "¿En qué industrias trabajó?",
+      "answer": "Banca y homebanking (Banco Macro, Bankingly), seguros (SURA), e-commerce internacional con Magento (BeautyCounter, Estados Unidos), gestión de recursos humanos (Fichap) y marketplace (Mercado Libre)."
+    },
+    {
+      "question": "¿Cómo contactarlo?",
+      "answer": "Por correo a abel.angel1996@gmail.com, por WhatsApp al +54 9 11 3083-0388 o por LinkedIn en linkedin.com/in/abelangel96. El currículum completo está disponible en formato web y descargable en PDF."
+    }
+  ]
+}

@@ -27,19 +27,36 @@ export interface Stat {
 }
 
 // Portfolio Types
-export interface PortfolioData {
-  projects: Project[]
+
+/** Lo que se escribe a mano en data/portfolio.json. */
+export interface CuratedProject {
+  /** Nombre exacto del repositorio en GitHub. Si falta, el proyecto se muestra sin enlace. */
+  repo?: string
+  title: string
+  description: string
+  type: "API" | "UI" | "Both"
+  /** Herramienta principal: Selenium, Cypress, Karate, Postman, Lippia… */
+  tool: string
+  /** Lenguaje de respaldo; si GitHub detecta uno, gana el de GitHub. */
+  language: string
+  tags?: string[]
 }
 
-export interface Project {
-  id: number
-  title: string
-  description: string // Agregado campo de descripción
-  image: string
-  githubUrl: string
-  type: "API" | "UI" | "Both"
-  tool: "Selenium" | "Other"
-  language: string
+export interface PortfolioData {
+  projects: CuratedProject[]
+}
+
+/** Proyecto curado + metadata viva de la API de GitHub. */
+export interface Project extends CuratedProject {
+  url?: string
+  stars?: number
+  forks?: number
+  isFork?: boolean
+  isArchived?: boolean
+  /** Fecha ISO del último push. */
+  lastActivity?: string
+  /** false cuando la API de GitHub no respondió y solo hay datos locales. */
+  hasLiveMetadata: boolean
 }
 
 // Experience Types
@@ -94,3 +111,13 @@ export interface SkillCategory {
   skills: string[]
 }
 
+
+// FAQ Types (usados también para el JSON-LD FAQPage que leen los buscadores y LLM)
+export interface Faq {
+  question: string
+  answer: string
+}
+
+export interface FaqData {
+  faqs: Faq[]
+}

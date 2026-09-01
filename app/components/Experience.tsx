@@ -1,88 +1,71 @@
-"use client"
-
-import { useEffect, useState } from "react"
+import { FaBriefcase } from "react-icons/fa"
 import type { ExperienceData } from "../types"
+import Reveal from "./Reveal"
+import SectionHeading from "./SectionHeading"
 
-export default function Experience() {
-  const [experienceData, setExperienceData] = useState<ExperienceData | null>(null)
-  const [isLoading, setIsLoading] = useState(true)
-  const [error, setError] = useState<string | null>(null)
+/** Un puesto se considera vigente si el período no tiene año de cierre. */
+const isCurrent = (period: string) => /actualidad|presente|actualmente/i.test(period)
 
-  useEffect(() => {
-    const fetchExperienceData = async () => {
-      try {
-        const response = await fetch("/api/experience")
-        if (!response.ok) {
-          throw new Error("Error al cargar los datos de experiencia")
-        }
-        const data = await response.json()
-        setExperienceData(data)
-      } catch (err) {
-        setError("Error al cargar los datos. Por favor, recarga la página.")
-        console.error("Error fetching experience data:", err)
-      } finally {
-        setIsLoading(false)
-      }
-    }
-
-    fetchExperienceData()
-  }, [])
-
-  if (isLoading) {
-    return (
-      <section id="experience" className="py-20 bg-white flex justify-center items-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
-      </section>
-    )
-  }
-
-  if (error || !experienceData) {
-    return (
-      <section id="experience" className="py-20 bg-white">
-        <div className="container mx-auto px-4 text-center text-red-500">
-          <p>{error || "Error al cargar los datos"}</p>
-          <button onClick={() => window.location.reload()} className="mt-4 bg-primary text-white px-4 py-2 rounded-md">
-            Reintentar
-          </button>
-        </div>
-      </section>
-    )
-  }
-
+export default function Experience({ experience }: { experience: ExperienceData }) {
   return (
-    <section id="experience" className="py-20 bg-white">
+    <section id="experiencia" className="section bg-background scroll-mt-24">
       <div className="container">
-        <h2 className="text-4xl font-bold text-center mb-2">Experiencia</h2>
-        <div className="w-20 h-1 bg-primary mx-auto mb-16"></div>
+        <SectionHeading
+          eyebrow="Trayectoria"
+          title="Experiencia profesional"
+          description="Ocho proyectos en banca, seguros, e-commerce, recursos humanos y marketplace."
+          icon={<FaBriefcase aria-hidden="true" />}
+        />
 
-        <div className="space-y-12">
-          {experienceData.experiences.map((job, index) => (
-            <div key={index} className="grid grid-cols-12 gap-8">
-              <div className="col-span-3">
-                <h3 className="text-xl font-semibold text-slate-800">{job.company}</h3>
-                <p className="text-slate-600 mt-1">{job.role}</p>
-                <p className="text-slate-500 mt-1">{job.period}</p>
-              </div>
+        {/* Línea de tiempo: el eje vertical ordena la lectura de arriba hacia abajo */}
+        <ol className="relative mx-auto max-w-4xl border-l border-border pl-6 sm:pl-10">
+          {experience.experiences.map((job, index) => (
+            <Reveal
+              as="li"
+              key={`${job.company}-${job.project}`}
+              delay={Math.min(index * 0.05, 0.3)}
+              className="relative pb-12 last:pb-0"
+            >
+              {/* Nodo del eje */}
+              <span
+                aria-hidden="true"
+                className={`absolute -left-[1.6rem] top-1.5 flex h-3 w-3 items-center justify-center rounded-full ring-4 ring-background sm:-left-[2.85rem] ${
+                  isCurrent(job.period) ? "bg-accent" : "bg-border"
+                }`}
+              />
 
-              <div className="col-span-9">
-                <h4 className="text-lg font-medium text-primary">{job.project}</h4>
-                <ul className="list-disc list-inside mt-4 space-y-2">
-                  {job.description.map((desc, descIndex) => (
-                    <li key={descIndex} className="text-slate-600" dangerouslySetInnerHTML={{ __html: desc }}></li>
+              <div className="card-interactive p-6 sm:p-8">
+                <div className="flex flex-wrap items-start justify-between gap-x-6 gap-y-2">
+                  <div>
+                    <h3 className="text-xl font-semibold text-foreground">{job.project}</h3>
+                    <p className="mt-1 text-sm font-medium text-primary">
+                      {job.role} · {job.company}
+                    </p>
+                  </div>
+                  <span
+                    className={`whitespace-nowrap rounded-full px-3 py-1 text-xs font-semibold ${
+                      isCurrent(job.period)
+                        ? "bg-accent/10 text-accent ring-1 ring-inset ring-accent/20"
+                        : "bg-secondary text-muted-foreground"
+                    }`}
+                  >
+                    {job.period}
+                  </span>
+                </div>
+
+                <ul className="mt-5 space-y-2.5">
+                  {job.description.map((desc, i) => (
+                    <li key={i} className="flex gap-3 text-sm leading-relaxed text-muted-foreground">
+                      <span aria-hidden="true" className="mt-2 h-1 w-1 shrink-0 rounded-full bg-accent" />
+                      <span dangerouslySetInnerHTML={{ __html: desc }} />
+                    </li>
                   ))}
                 </ul>
               </div>
-
-              {index < experienceData.experiences.length - 1 && (
-                <div className="col-span-12">
-                  <hr className="border-slate-200 my-8" />
-                </div>
-              )}
-            </div>
+            </Reveal>
           ))}
-        </div>
+        </ol>
       </div>
     </section>
   )
 }
-

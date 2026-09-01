@@ -1,50 +1,45 @@
-"use client"
-
-import { Suspense } from "react"
+import { getAllData } from "@/lib/data"
+import { getProjects } from "@/lib/github"
+import { JsonLd, homeSchema } from "@/lib/schema"
+import AboutMe from "./components/AboutMe"
+import CvCallout from "./components/CvCallout"
+import Education from "./components/Education"
+import Experience from "./components/Experience"
+import Faq from "./components/Faq"
+import Footer from "./components/Footer"
 import Header from "./components/Header"
 import Hero from "./components/Hero"
-import AboutMe from "./components/AboutMe"
-import Footer from "./components/Footer"
 import Portfolio from "./components/Portfolio"
-import Experience from "./components/Experience"
-import Education from "./components/Education"
 import Skills from "./components/Skills"
 
-// Componentes de carga para Suspense
-const LoadingFallback = () => (
-  <div className="flex justify-center items-center min-h-screen">
-    <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-primary"></div>
-  </div>
-)
+/**
+ * Server Component: lee los JSON de /data en el servidor y los pasa por props.
+ *
+ * Antes cada sección se montaba vacía y hacía fetch a /api/* desde el navegador,
+ * así que el HTML que recibían Google, Bing y los crawlers de los LLM no tenía
+ * contenido. Ahora todo el texto viaja renderizado y además desaparecen los
+ * spinners: la página se ve completa desde el primer pintado.
+ */
+export default async function Home() {
+  const data = getAllData()
+  // La metadata de GitHub se revalida cada hora; si la API falla, quedan los datos curados
+  const projects = await getProjects()
 
-export default function Home() {
   return (
-    <div className="min-h-screen flex flex-col">
+    <>
+      <JsonLd schema={homeSchema(data, projects)} />
       <Header />
-      <div className="flex-grow">
-        <Suspense fallback={<LoadingFallback />}>
-          <Hero />
-        </Suspense>
-        <Suspense fallback={<LoadingFallback />}>
-          <AboutMe />
-        </Suspense>
-        <main>
-          <Suspense fallback={<LoadingFallback />}>
-            <Portfolio />
-          </Suspense>
-          <Suspense fallback={<LoadingFallback />}>
-            <Experience />
-          </Suspense>
-          <Suspense fallback={<LoadingFallback />}>
-            <Education />
-          </Suspense>
-          <Suspense fallback={<LoadingFallback />}>
-            <Skills />
-          </Suspense>
-        </main>
-        <Footer />
-      </div>
-    </div>
+      <main id="contenido">
+        <Hero hero={data.hero} about={data.aboutMe} />
+        <AboutMe about={data.aboutMe} />
+        <Portfolio projects={projects} />
+        <Experience experience={data.experience} />
+        <Education education={data.education} />
+        <Skills skills={data.skills} />
+        <Faq faq={data.faq} />
+        <CvCallout />
+      </main>
+      <Footer />
+    </>
   )
 }
-

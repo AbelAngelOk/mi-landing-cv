@@ -1,125 +1,127 @@
 "use client"
 
-import { useEffect, useState } from "react"
-import { FaCogs, FaCode, FaDatabase, FaCloud } from "react-icons/fa"
-import type { SkillsData, SkillRole } from "../types"
+import { useState } from "react"
+import { FaCloud, FaCode, FaCogs, FaDatabase, FaLayerGroup } from "react-icons/fa"
+import type { SkillsData } from "../types"
+import SectionHeading from "./SectionHeading"
 
-export default function Skills() {
-  const [skillsData, setSkillsData] = useState<SkillsData | null>(null)
-  const [isLoading, setIsLoading] = useState(true)
-  const [error, setError] = useState<string | null>(null)
-  const [activeRole, setActiveRole] = useState<SkillRole | null>(null)
+const icons: Record<string, React.ReactNode> = {
+  cogs: <FaCogs aria-hidden="true" />,
+  code: <FaCode aria-hidden="true" />,
+  database: <FaDatabase aria-hidden="true" />,
+  cloud: <FaCloud aria-hidden="true" />,
+}
 
-  useEffect(() => {
-    const fetchSkillsData = async () => {
-      try {
-        const response = await fetch("/api/skills")
-        if (!response.ok) {
-          throw new Error("Error al cargar los datos de habilidades")
-        }
-        const data = await response.json()
-        setSkillsData(data)
-        if (data.skillRoles && data.skillRoles.length > 0) {
-          setActiveRole(data.skillRoles[0])
-        }
-      } catch (err) {
-        setError("Error al cargar los datos. Por favor, recarga la página.")
-        console.error("Error fetching skills data:", err)
-      } finally {
-        setIsLoading(false)
-      }
+/**
+ * Habilidades como tabs accesibles (role="tablist" + navegación con flechas).
+ *
+ * Todas las categorías se renderizan en el HTML y las inactivas se ocultan con
+ * el atributo `hidden`: el contenido sigue siendo indexable y legible por un LLM
+ * aunque el usuario nunca haga clic en la pestaña.
+ */
+export default function Skills({ skills }: { skills: SkillsData }) {
+  const [activeIndex, setActiveIndex] = useState(0)
+
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>, index: number) => {
+    const lastIndex = skills.skillRoles.length - 1
+    let next: number | null = null
+
+    if (event.key === "ArrowDown" || event.key === "ArrowRight") next = index === lastIndex ? 0 : index + 1
+    if (event.key === "ArrowUp" || event.key === "ArrowLeft") next = index === 0 ? lastIndex : index - 1
+    if (event.key === "Home") next = 0
+    if (event.key === "End") next = lastIndex
+
+    if (next !== null) {
+      event.preventDefault()
+      setActiveIndex(next)
+      document.getElementById(`skill-tab-${next}`)?.focus()
     }
-
-    fetchSkillsData()
-  }, [])
-
-  const getIconComponent = (iconName: string) => {
-    switch (iconName) {
-      case "cogs":
-        return <FaCogs />
-      case "code":
-        return <FaCode />
-      case "database":
-        return <FaDatabase />
-      case "cloud":
-        return <FaCloud />
-      default:
-        return <FaCode />
-    }
-  }
-
-  if (isLoading) {
-    return (
-      <section id="skills" className="py-20 bg-slate-50 flex justify-center items-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
-      </section>
-    )
-  }
-
-  if (error || !skillsData || !activeRole) {
-    return (
-      <section id="skills" className="py-20 bg-slate-50">
-        <div className="container mx-auto px-4 text-center text-red-500">
-          <p>{error || "Error al cargar los datos"}</p>
-          <button onClick={() => window.location.reload()} className="mt-4 bg-primary text-white px-4 py-2 rounded-md">
-            Reintentar
-          </button>
-        </div>
-      </section>
-    )
   }
 
   return (
-    <section id="skills" className="py-20 bg-slate-50">
+    <section id="habilidades" className="section bg-background scroll-mt-24">
       <div className="container">
-        <h2 className="text-4xl font-bold text-center mb-2">Habilidades</h2>
-        <div className="w-20 h-1 bg-primary mx-auto mb-12"></div>
+        <SectionHeading
+          eyebrow="Stack"
+          title="Habilidades técnicas"
+          description="Herramientas y prácticas que uso a diario, agrupadas por rol."
+          icon={<FaLayerGroup aria-hidden="true" />}
+        />
 
-        <div className="flex flex-col md:flex-row gap-8">
-          {/* Menú vertical */}
-          <div className="md:w-64 mb-6 md:mb-0">
-            <ul className="space-y-2">
-              {skillsData.skillRoles.map((role, index) => (
-                <li key={index}>
+        <div className="grid gap-8 lg:grid-cols-12 lg:gap-10">
+          <div className="lg:col-span-4">
+            <div
+              role="tablist"
+              aria-label="Áreas de habilidades"
+              aria-orientation="vertical"
+              className="flex gap-2 overflow-x-auto pb-2 lg:flex-col lg:overflow-visible lg:pb-0"
+            >
+              {skills.skillRoles.map((role, index) => {
+                const isActive = index === activeIndex
+                return (
                   <button
-                    onClick={() => setActiveRole(role)}
-                    className={`w-full text-left px-4 py-2 rounded-lg transition-colors ${
-                      activeRole.title === role.title ? "bg-primary text-white" : "bg-white hover:bg-slate-100"
+                    key={role.title}
+                    id={`skill-tab-${index}`}
+                    role="tab"
+                    type="button"
+                    aria-selected={isActive}
+                    aria-controls={`skill-panel-${index}`}
+                    tabIndex={isActive ? 0 : -1}
+                    onClick={() => setActiveIndex(index)}
+                    onKeyDown={(e) => handleKeyDown(e, index)}
+                    className={`flex min-h-[3rem] shrink-0 items-center gap-3 rounded-xl px-4 text-left text-sm font-semibold transition-all duration-200 lg:w-full ${
+                      isActive
+                        ? "bg-primary text-primary-foreground shadow-sm"
+                        : "bg-card text-muted-foreground ring-1 ring-inset ring-border hover:text-foreground hover:ring-primary/30"
                     }`}
                   >
-                    <div className="flex items-center">
-                      <span className="text-xl mr-3">{getIconComponent(role.icon)}</span>
-                      <span className="font-medium">{role.title}</span>
-                    </div>
+                    <span className={`text-lg ${isActive ? "text-accent" : "text-primary/60"}`}>
+                      {icons[role.icon] ?? icons.code}
+                    </span>
+                    <span className="whitespace-nowrap lg:whitespace-normal">{role.title}</span>
                   </button>
-                </li>
-              ))}
-            </ul>
+                )
+              })}
+            </div>
           </div>
 
-          {/* Contenedor de información */}
-          <div className="md:w-3/4">
-            <div className="bg-white p-6 rounded-lg shadow-md">
-              <h3 className="text-2xl font-semibold mb-4">{activeRole.title}</h3>
-              <div className="grid grid-cols-1 gap-4">
-                {activeRole.categories.map((category, catIndex) => (
-                  <div key={catIndex} className="bg-slate-50 p-4 rounded-md border border-slate-200">
-                    <h4 className="text-lg font-medium text-gray-700 mb-2">{category.title}</h4>
-                    <div className="flex flex-wrap gap-2">
-                      {category.skills.map((skill, skillIndex) => (
-                        <span key={skillIndex} className="bg-primary text-white px-3 py-1 rounded text-sm">
-                          {skill}
-                        </span>
-                      ))}
+          <div className="lg:col-span-8">
+            {skills.skillRoles.map((role, index) => (
+              <div
+                key={role.title}
+                id={`skill-panel-${index}`}
+                role="tabpanel"
+                aria-labelledby={`skill-tab-${index}`}
+                hidden={index !== activeIndex}
+                tabIndex={0}
+                className="card p-6 sm:p-8"
+              >
+                <h3 className="text-xl font-semibold text-foreground">{role.title}</h3>
+
+                <div className="mt-6 space-y-6">
+                  {role.categories.map((category) => (
+                    <div key={category.title}>
+                      <h4 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">
+                        {category.title}
+                      </h4>
+                      <ul className="mt-3 flex flex-wrap gap-2">
+                        {category.skills.map((skill) => (
+                          <li
+                            key={skill}
+                            className="rounded-lg bg-secondary px-3 py-1.5 text-sm font-medium text-secondary-foreground ring-1 ring-inset ring-border transition-colors hover:bg-primary hover:text-primary-foreground"
+                          >
+                            {skill}
+                          </li>
+                        ))}
+                      </ul>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>
     </section>
   )
 }
-

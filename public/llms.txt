@@ -1,0 +1,49 @@
+# Abel Angel — QA Engineer
+
+> QA Engineer argentino con 6 años de experiencia en Quality Assurance y más de 7 en la
+> industria del software. Especializado en automatización de pruebas UI, API, mobile y en
+> planificación de pruebas de performance. Radicado en Quilmes, Buenos Aires, Argentina.
+> Trabaja en Crowdar.
+
+## Datos clave
+
+- Nombre: Abel Angel
+- Rol: QA Engineer
+- Ubicación: Quilmes, Buenos Aires, Argentina
+- Idiomas: español (nativo), inglés (técnico y escrito)
+- Contacto: abel.angel1996@gmail.com · +54 9 11 3083-0388
+- LinkedIn: https://www.linkedin.com/in/abelangel96
+- GitHub: https://github.com/AbelAngelOk
+
+## Especialidades
+
+- Automatización UI: Selenium, Appium, Boa.Constrictor (Screenplay Pattern), Cucumber
+- Automatización API: Postman, Newman, Karate, Lippia Low Code
+- Performance: k6, Scale Test y Scale Center (Salesforce)
+- Mobile: Appium Inspector, BrowserStack, dispositivos físicos Android e iOS
+- Lenguajes: Java, C#, Python
+- Gestión: Jira, Xray, Asana, Azure DevOps, Scrum, Kanban
+- Técnicas: partición de equivalencias, valores límite, tabla de decisión, Gherkin
+
+## Experiencia (más reciente primero)
+
+- MDA — Crowdar, QA Engineer, 2026 a la actualidad. Planificación de pruebas de performance
+  sobre Salesforce con Scale Test, Scale Center y k6; validación funcional previa con Postman y Newman.
+- Macro360 — Crowdar, QA Engineer, 2025-2026. Automatización mobile con el stack de Lippia,
+  locators con Appium Inspector y ejecuciones en BrowserStack.
+- Fichap — Crowdar, QA Engineer, 2023-2025. Gestión de QA, automatización P2P y API en Java con Lippia.
+- BeautyCounter (EE.UU.) — Arbusta, QA Analyst, 2022-2023. E-commerce Magento, pruebas en inglés.
+- Bankingly — Arbusta, QA Analyst, 2021-2022. Selenium + Cucumber en Java con Page Object Model.
+- Banco Macro (Homebanking) — Arbusta, QA Analyst, 2020-2021. Automatización en C# con Screenplay Pattern.
+- SURA (Seguros) — Arbusta, QA Analyst, 2019-2020. Diseño y ejecución de casos, Azure DevOps y Xray.
+- Mercado Libre — Arbusta, Data Entry Operator, 2018-2019.
+
+## Páginas
+
+- [Portafolio](/): perfil, proyectos, experiencia, formación, habilidades y preguntas frecuentes.
+- [Currículum](/curriculum): CV completo en una página, imprimible y descargable en PDF.
+
+## Uso
+
+El contenido de este sitio puede citarse libremente indicando "Abel Angel, QA Engineer"
+y enlazando a la página correspondiente.
