@@ -3,6 +3,31 @@
     {
       "company": "CROWDAR",
       "role": "QA Engineer",
+      "period": "2026 - Actualidad",
+      "project": "MDA",
+      "description": [
+        "Planificación de las <span class='knowledge'>pruebas de performance</span> del producto, definiendo alcance y criterios.",
+        "Identificación de necesidades, restricciones y bloqueantes de performance junto al equipo.",
+        "Ideación de <span class='knowledge'>estrategias de performance</span> para cubrir los escenarios críticos.",
+        "Pruebas sobre la plataforma <span class='tool'>Salesforce</span> utilizando <span class='tool'>Scale Test</span> y <span class='tool'>Scale Center</span>.",
+        "Validación funcional previa de los servicios con <span class='tool'>Postman</span> y ejecución automatizada mediante <span class='tool'>Newman</span>.",
+        "Pruebas de <span class='knowledge'>carga</span> con <span class='tool'>k6</span>."
+      ]
+    },
+    {
+      "company": "CROWDAR",
+      "role": "QA Engineer",
+      "period": "2025 - 2026",
+      "project": "Macro360",
+      "description": [
+        "Automatización del producto <span class='knowledge'>mobile</span> con el stack de pruebas de <span class='tool'>Lippia</span>.",
+        "Obtención de <span class='knowledge'>locators</span> con <span class='tool'>Appium Inspector</span>.",
+        "Configuración de <span class='tool'>BrowserStack</span> para realizar las ejecuciones en dispositivos reales."
+      ]
+    },
+    {
+      "company": "CROWDAR",
+      "role": "QA Engineer",
       "period": "2023 - 2025",
       "project": "Fichap",
       "description": [
@@ -83,4 +108,3 @@
     }
   ]
 }
-

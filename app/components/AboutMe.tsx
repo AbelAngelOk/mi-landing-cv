@@ -63,11 +63,7 @@ export default function AboutMe() {
                 layout="fill"
                 objectFit="cover"
                 className="rounded-full shadow-2xl"
-                title="Imagen de prueba, uso temporal"
               />
-              <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-60 flex items-center justify-center transition-all duration-300 opacity-0 group-hover:opacity-100 rounded-full">
-                <p className="text-white text-xs px-4 text-center">Imagen de prueba, uso temporal</p>
-              </div>
               <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-blue-800 rounded-full flex items-center justify-center">
                 <span className="text-white font-bold text-xl">QA</span>
               </div>

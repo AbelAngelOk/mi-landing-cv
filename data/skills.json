@@ -10,7 +10,7 @@
         },
         {
           "title": "Herramientas de Automatización UI",
-          "skills": ["Selenium", "Postman", "Karate"]
+          "skills": ["Selenium", "Appium", "Postman", "Karate"]
         },
         {
           "title": "Frameworks de Pruebas",
@@ -19,6 +19,10 @@
         {
           "title": "BDD y Frameworks Complementarios",
           "skills": ["Cucumber", "SerenityBDD", "Boa.Constrictor"]
+        },
+        {
+          "title": "Pruebas de Performance",
+          "skills": ["k6", "Newman", "Scale Test", "Scale Center"]
         }
       ]
     },
@@ -36,7 +40,7 @@
         },
         {
           "title": "Herramientas de Pruebas",
-          "skills": ["Postman", "BrowserStack", "Jam"]
+          "skills": ["Postman", "BrowserStack", "Appium Inspector", "Salesforce", "Jam"]
         },
         {
           "title": "Comunicación y colaboración",
